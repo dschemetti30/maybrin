@@ -161,18 +161,18 @@
     .h-hero {
       font-family: var(--font);
       font-weight: 400;
-      font-size: clamp(48px, 8.4vw, 144px);
-      line-height: 0.94;
-      letter-spacing: -0.038em;
+      font-size: clamp(44px, 6.4vw, 104px);
+      line-height: 0.98;
+      letter-spacing: -0.034em;
       font-variation-settings: "opsz" 96;
     }
     .h-1 {
       font-family: var(--font);
       font-weight: 400;
-      font-size: clamp(40px, 5.8vw, 88px);
-      line-height: 0.98;
-      letter-spacing: -0.032em;
-      font-variation-settings: "opsz" 72;
+      font-size: clamp(36px, 4.6vw, 72px);
+      line-height: 1.0;
+      letter-spacing: -0.028em;
+      font-variation-settings: "opsz" 64;
     }
     .h-2 {
       font-family: var(--font);
@@ -326,16 +326,16 @@
        ================================================================== */
     .rv {
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 900ms var(--ease), transform 900ms var(--ease);
+      transform: translateY(32px);
+      transition: opacity 800ms var(--ease), transform 800ms var(--ease);
     }
     .rv.in { opacity: 1; transform: translateY(0); }
-    .rv.d1 { transition-delay: 80ms; }
-    .rv.d2 { transition-delay: 160ms; }
-    .rv.d3 { transition-delay: 240ms; }
-    .rv.d4 { transition-delay: 320ms; }
-    .rv.d5 { transition-delay: 400ms; }
-    .rv.d6 { transition-delay: 480ms; }
+    .rv.d1 { transition-delay: 100ms; }
+    .rv.d2 { transition-delay: 200ms; }
+    .rv.d3 { transition-delay: 300ms; }
+    .rv.d4 { transition-delay: 400ms; }
+    .rv.d5 { transition-delay: 500ms; }
+    .rv.d6 { transition-delay: 600ms; }
 
     /* ==================================================================
        HERO - asymmetric, anchored low, with credit strip
@@ -472,9 +472,9 @@
     }
     .chapter-num {
       font-weight: 200;
-      font-size: clamp(72px, 9vw, 132px);
+      font-size: clamp(60px, 7vw, 104px);
       line-height: 0.85;
-      letter-spacing: -0.06em;
+      letter-spacing: -0.055em;
       color: var(--orange);
       font-variation-settings: "opsz" 96;
     }
@@ -1040,16 +1040,16 @@
       font-size: 14.5px;
       line-height: 1.55;
       color: rgba(242, 237, 223, 0.65);
-      margin: 0;
+      margin: 0 0 12px;
     }
     .method-deliv {
       list-style: none;
-      padding: 16px 0 0;
-      margin: 12px 0 0;
+      padding: 24px 0 0;
+      margin: 20px 0 0;
       border-top: 1px solid rgba(242, 237, 223, 0.15);
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px;
     }
     .method-deliv li {
       font-family: var(--mono);
@@ -1556,9 +1556,9 @@
     }
     .cta-mark {
       font-weight: 200;
-      font-size: clamp(72px, 9vw, 132px);
+      font-size: clamp(60px, 7vw, 104px);
       line-height: 0.85;
-      letter-spacing: -0.06em;
+      letter-spacing: -0.055em;
       color: var(--orange);
       font-variation-settings: "opsz" 96;
     }
@@ -1656,6 +1656,83 @@
     }
     .intake-ok.show { display: block; }
 
+    /* Full-takeover success state for both forms */
+    .form-success-state {
+      display: none;
+      padding: 48px 8px;
+      text-align: center;
+      animation: successIn 600ms var(--ease);
+    }
+    .form-success-state.show { display: block; }
+    .intake.submitted > *:not(.form-success-state),
+    .fn-form.submitted > *:not(.form-success-state) {
+      display: none;
+    }
+    .success-check {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--orange);
+      display: inline-grid;
+      place-items: center;
+      margin-bottom: 24px;
+      animation: checkIn 700ms var(--ease) 100ms both;
+    }
+    .success-check svg {
+      stroke: var(--paper);
+      stroke-width: 2.2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 30;
+      stroke-dashoffset: 30;
+      animation: drawCheck 500ms var(--ease) 500ms forwards;
+    }
+    .success-title {
+      font-family: var(--font);
+      font-weight: 500;
+      font-size: clamp(22px, 2.2vw, 28px);
+      line-height: 1.15;
+      letter-spacing: -0.018em;
+      color: var(--paper);
+      margin: 0 0 12px;
+    }
+    .fn-form .success-title { color: var(--paper); }
+    .success-msg {
+      font-size: 15.5px;
+      line-height: 1.55;
+      color: rgba(242, 237, 223, 0.75);
+      margin: 0 auto;
+      max-width: 42ch;
+    }
+    .success-meta {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-top: 28px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .success-meta::before {
+      content: "";
+      width: 24px; height: 1px;
+      background: var(--orange);
+    }
+    @keyframes successIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes checkIn {
+      from { opacity: 0; transform: scale(0.6); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes drawCheck {
+      to { stroke-dashoffset: 0; }
+    }
+
     .cta-loc {
       margin-top: 64px;
       padding-top: 32px;
@@ -1723,9 +1800,9 @@
 
     .foot-tagline {
       font-weight: 300;
-      font-size: clamp(56px, 11vw, 168px);
-      line-height: 0.92;
-      letter-spacing: -0.045em;
+      font-size: clamp(44px, 7vw, 112px);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
       color: var(--ink);
       margin: 64px 0 48px;
       max-width: 16ch;
@@ -2169,7 +2246,7 @@
           <blockquote class="quote-text">A rare combination of integrity, strategic creativity, and authentic leadership that drives both revenue and loyalty.</blockquote>
           <figcaption class="quote-attr">
             <span class="quote-name">Terry Mayfield</span>
-            <span class="quote-role">EdTech Founder · Worked with Donnie at Ticket Spicket</span>
+            <span class="quote-role">EdTech Founder</span>
           </figcaption>
         </figure>
 
@@ -2610,7 +2687,7 @@
         </div>
 
         <!-- Submits to FORM_ENDPOINT (see script tag). See form-backend.gs for the Apps Script. -->
-        <form class="fn-form rv d1" onsubmit="event.preventDefault(); submitForm(this, { _form: 'newsletter', email: this.email.value }, this.querySelector('.form-ok'), this.querySelector('button[type=submit]'));">
+        <form class="fn-form rv d1" onsubmit="event.preventDefault(); submitForm(this, { _form: 'newsletter', email: this.email.value });">
           <div class="fn-form-head">
             <span class="fn-form-title">Subscribe</span>
             <span class="fn-form-num">No. 001</span>
@@ -2625,7 +2702,17 @@
             </button>
           </div>
           <p class="fn-meta">No spam · Unsubscribe anytime · One email per month</p>
-          <p class="form-ok" role="status" aria-live="polite">Thanks - first dispatch arrives shortly.</p>
+
+          <div class="form-success-state" role="status" aria-live="polite">
+            <div class="success-check" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 28 28">
+                <path d="M7 14.5L12 19.5L21 9.5"/>
+              </svg>
+            </div>
+            <h3 class="success-title">You're on the list.</h3>
+            <p class="success-msg">First dispatch lands in your inbox soon. Until then, no spam, no noise - one short email per month, written for K-12 SaaS operators.</p>
+            <span class="success-meta">Field Notes · No. 001 incoming</span>
+          </div>
         </form>
       </div>
 
@@ -2658,7 +2745,7 @@
       </div>
 
       <!-- Submits to FORM_ENDPOINT (see script tag). See form-backend.gs for the Apps Script. -->
-      <form class="intake rv d3" onsubmit="event.preventDefault(); submitForm(this, { _form: 'intake', name: this.name.value, company: this.company.value, email: this.email.value, stage: this.stage.value, brief: this.brief.value }, this.querySelector('.intake-ok'), this.querySelector('button[type=submit]'));">
+      <form class="intake rv d3" onsubmit="event.preventDefault(); submitForm(this, { _form: 'intake', name: this.name.value, company: this.company.value, email: this.email.value, stage: this.stage.value, brief: this.brief.value });">
         <div class="intake-row">
           <label>
             <span>Name</span>
@@ -2692,7 +2779,17 @@
           </button>
           <span class="intake-note">Or <a href="#" class="js-email" data-u="d.schemetti" data-d="gmail.com">email Donnie directly</a></span>
         </div>
-        <p class="intake-ok" role="status" aria-live="polite">Thanks - Donnie will reach out within two business days.</p>
+
+        <div class="form-success-state" role="status" aria-live="polite">
+          <div class="success-check" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28">
+              <path d="M7 14.5L12 19.5L21 9.5"/>
+            </svg>
+          </div>
+          <h3 class="success-title">Thanks. Donnie will be in touch.</h3>
+          <p class="success-msg">Expect a reply within two business days. If you'd rather book time directly, <a href="https://calendly.com/donnie-schemetti" target="_blank" rel="noopener" style="color: var(--orange); border-bottom: 1px solid var(--orange);">grab a slot on his calendar</a>.</p>
+          <span class="success-meta">Reply en route</span>
+        </div>
       </form>
 
       <div class="cta-loc rv d4">
@@ -2844,13 +2941,9 @@
     // ============================================================
     const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbyv5C0warPGLSf36RgPc0cv7jvlPH_TGCM3sgbTPrrZkkSiBxrbD99hDqf4-R2znjAuIA/exec";
 
-    async function submitForm(form, payload, successEl, submitBtn) {
-      // Disable inputs immediately so a double-click doesn't double-submit
-      form.querySelectorAll('input, textarea').forEach(el => el.disabled = true);
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.style.opacity = '0.4';
-      }
+    async function submitForm(form, payload) {
+      // Disable everything immediately to prevent double-submit
+      form.querySelectorAll('input, textarea, button').forEach(el => el.disabled = true);
 
       try {
         if (FORM_ENDPOINT) {
@@ -2866,13 +2959,22 @@
             })
           });
         }
-        successEl.classList.add('show');
       } catch (err) {
-        // Even on error, show success - failures are rare and we don't want to
-        // expose endpoint errors to the visitor. Apps Script with no-cors returns
-        // an opaque response so we can't actually read success/failure anyway.
-        successEl.classList.add('show');
+        // Apps Script with no-cors returns opaque response so we can't read
+        // success/failure. We optimistically show success - if it fails, it's
+        // visible in the Google Sheet (or absent from it).
         console.warn('Form submission warning:', err);
+      }
+
+      // Reveal the success takeover state
+      form.classList.add('submitted');
+      const success = form.querySelector('.form-success-state');
+      if (success) {
+        success.classList.add('show');
+        // Scroll the success state into view so the user sees the result
+        setTimeout(() => {
+          success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 100);
       }
     }
 
